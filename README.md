@@ -68,3 +68,5 @@ uvicorn cam3_api:app --host 0.0.0.0 --port 8000
 chmod +x start.sh
 
 update-rc.d start.sh defaults
+
+updated-rc.d -f start.sh remove
