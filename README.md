@@ -70,3 +70,5 @@ chmod +x start.sh
 update-rc.d start.sh defaults
 
 updated-rc.d -f start.sh remove
+
+systemctl status start.service
