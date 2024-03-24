@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-time People Count and Image Display</title>
+</head>
+<body>
+    <h2>Detected People Count: <span id="peopleCount">Loading...</span></h2>
+    <img id="imageDisplay" src="" alt="Current frame" style="border: 2px solid black;"/>
+
+    <script>
+        async function fetchData() {
+            const url = 'http://172.30.1.49:8000/count/'; // Change this to your actual FastAPI server URL
+            //const url = 'http://127.0.0.1:8000/count/'; // Change this to your actual FastAPI server URL
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                document.getElementById('peopleCount').textContent = data.count;
+                document.getElementById('imageDisplay').src = 'data:image/jpeg;base64,' + data.image;
+            } catch (error) {
+                console.log(error);
+                document.getElementById('peopleCount').textContent = 'Failed to load data.';
+            }
+        }
+
+        // Fetch data every 1 second (1000 milliseconds)
+        setInterval(fetchData, 10);
+    </script>
+</body>
+</html>
