@@ -33,6 +33,11 @@ vim start.sh
 
 ###
 #!/bin/bash
+
+source /yolo_cam/bin/activate
+cd ~/workspace/YOLO_CAM
+uvicorn cam3_api:app --host 0.0.0.0 --port 8000
+
 ..(etc)
 
 chmod +x start.sh
