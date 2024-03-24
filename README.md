@@ -55,7 +55,7 @@ vim start.sh
 ###
 #!/bin/bash
 
-source /yolo_cam/bin/activate
+source /Python-3.8.12/yolo_cam/bin/activate
 
 cd ~/workspace/YOLO_CAM
 
